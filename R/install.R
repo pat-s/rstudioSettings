@@ -93,21 +93,21 @@ fun_with_spinner <- function() {
     Windows = {
       fs::dir_create("~/AppData/Roaming/RStudio/keybindings", showWarnings = FALSE)
       jsonlite::write_json(keybindings,
-        "~/AppData/Roaming/RStudio/keybindings/rstudio_bindings.json",
-        pretty = TRUE, , auto_unbox = TRUE
+        fs::path_expand("~/AppData/Roaming/RStudio/keybindings/rstudio_bindings.json"),
+        pretty = TRUE, auto_unbox = TRUE
       )
     },
     Linux = {
       fs::dir_create("~/.config/rstudio/keybindings", showWarnings = FALSE)
       jsonlite::write_json(keybindings,
-        "~/.config/rstudio/keybindings/rstudio_bindings.json",
+        fs::path_expand("~/.config/rstudio/keybindings/rstudio_bindings.json"),
         pretty = TRUE, auto_unbox = TRUE
       )
     },
     Darwin = {
       fs::dir_create("~/.config/rstudio/keybindings", showWarnings = FALSE)
       jsonlite::write_json(keybindings,
-        "~/.config/rstudio/keybindings/rstudio_bindings.json",
+        fs::path_expand("~/.config/rstudio/keybindings/rstudio_bindings.json"),
         pretty = TRUE, auto_unbox = TRUE
       )
     }
@@ -116,19 +116,19 @@ fun_with_spinner <- function() {
   switch(Sys.info()[["sysname"]],
     Windows = {
       jsonlite::write_json(general,
-        "~/AppData/Roaming/RStudio/rstudio-prefs.json",
+        fs::path_expand("~/AppData/Roaming/RStudio/rstudio-prefs.json"),
         pretty = TRUE, auto_unbox = TRUE
       )
     },
     Linux = {
       jsonlite::write_json(general,
-        "~/.config/rstudio/rstudio-prefs.json",
+        fs::path_expand("~/.config/rstudio/rstudio-prefs.json"),
         pretty = TRUE, auto_unbox = TRUE
       )
     },
     Darwin = {
       jsonlite::write_json(general,
-        "~/.config/rstudio/rstudio-prefs.json",
+        fs::path_expand("~/.config/rstudio/rstudio-prefs.json"),
         pretty = TRUE, auto_unbox = TRUE
       )
     }
@@ -138,19 +138,19 @@ fun_with_spinner <- function() {
     switch(Sys.info()[["sysname"]],
       Windows = {
         jsonlite::write_json(addins,
-          "~/AppData/Roaming/RStudio/keybindings/addins.json",
+          fs::path_expand("~/AppData/Roaming/RStudio/keybindings/addins.json"),
           pretty = TRUE, auto_unbox = TRUE
         )
       },
       Linux = {
         jsonlite::write_json(addins,
-          "~/.config/rstudio/keybindings/addins.json.json",
+          fs::path_expand("~/.config/rstudio/keybindings/addins.json.json"),
           pretty = TRUE, auto_unbox = TRUE
         )
       },
       Darwin = {
         jsonlite::write_json(addins,
-          "~/.config/rstudio/keybindings/addins.json",
+          fs::path_expand("~/.config/rstudio/keybindings/addins.json"),
           pretty = TRUE, auto_unbox = TRUE
         )
       }
