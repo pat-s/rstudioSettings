@@ -16,6 +16,7 @@ if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes")
 if (!requireNamespace("curl", quietly = TRUE)) install.packages("curl")
 if (!requireNamespace("rstudioapi")) install.packages("rstudioapi")
 if (!requireNamespace("cli")) install.packages("cli")
+if (!requireNamespace("fs")) install.packages("fs")
 
 if (minimal != 1) {
   remotes::install_github("gadenbuie/rsthemes")
@@ -90,21 +91,21 @@ fun_with_spinner <- function() {
 
   switch(Sys.info()[["sysname"]],
     Windows = {
-      dir.create("~/AppData/Roaming/RStudio/keybindings", showWarnings = FALSE)
+      fs::dir_create("~/AppData/Roaming/RStudio/keybindings", showWarnings = FALSE)
       jsonlite::write_json(keybindings,
         "~/AppData/Roaming/RStudio/keybindings/rstudio_bindings.json",
         pretty = TRUE, , auto_unbox = TRUE
       )
     },
     Linux = {
-      dir.create("~/.config/rstudio/keybindings", showWarnings = FALSE)
+      fs::dir_create("~/.config/rstudio/keybindings", showWarnings = FALSE)
       jsonlite::write_json(keybindings,
         "~/.config/rstudio/keybindings/rstudio_bindings.json",
         pretty = TRUE, auto_unbox = TRUE
       )
     },
     Darwin = {
-      dir.create("~/.config/rstudio/keybindings", showWarnings = FALSE)
+      fs::dir_create("~/.config/rstudio/keybindings", showWarnings = FALSE)
       jsonlite::write_json(keybindings,
         "~/.config/rstudio/keybindings/rstudio_bindings.json",
         pretty = TRUE, auto_unbox = TRUE
