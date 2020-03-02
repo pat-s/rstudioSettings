@@ -19,6 +19,7 @@ if (!requireNamespace("cli")) install.packages("cli")
 if (!requireNamespace("fs")) install.packages("fs")
 
 if (minimal != 1) {
+  Sys.setenv("R_REMOTES_UPGRADE" = "always")
   remotes::install_github("gadenbuie/rsthemes")
   rsthemes::install_rsthemes()
   rstudioapi::applyTheme("One Light {rsthemes}")
