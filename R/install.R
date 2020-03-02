@@ -158,6 +158,9 @@ fun_with_spinner <- function() {
   }
   sp1$finish()
 }
+
+rstudioapi::restartSession()
+
 cli::ansi_with_hidden_cursor(fun_with_spinner())
 if (minimal != 1) {
   cli::cli_alert_success("Successfully installed Patrick's RStudio settings.")
