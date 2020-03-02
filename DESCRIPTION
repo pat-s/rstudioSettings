@@ -13,3 +13,5 @@ License: `use_mit_license()`, `use_gpl3_license()` or friends to
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
+URL: https://github.com/pat-s/rstudioSettings
+BugReports: https://github.com/pat-s/rstudioSettings/issues
