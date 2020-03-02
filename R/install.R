@@ -27,8 +27,7 @@ if (minimal != 1) {
   remotes::install_github("r-lib/prettycode")
   remotes::install_github("tmastny/browse")
   remotes::install_github("lorenzwalthert/teamtools")
-  remotes::install_github("lorenzwalthert/styler@mlr-style")
-  remotes::install_github("gadenbuie/rsthemes")
+  remotes::install_github("pat-s/styler@mlr-style")
   remotes::install_github("mine-cetinkaya-rundel/addmins")
   install.packages(c("reprex", "remotes", "startup"))
 }
