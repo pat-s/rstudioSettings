@@ -84,7 +84,7 @@ fun_with_spinner <- function() {
     general <- jsonlite::fromJSON("https://raw.githubusercontent.com/pat-s/rstudioSettings/master/inst/rstudio-prefs-patrick.json")
     addins <- jsonlite::fromJSON("https://raw.githubusercontent.com/pat-s/rstudioSettings/master/inst/addins.json")
   } else {
-    keybindings <- jsonlite::fromJSON("https://raw.githubusercontent.com/pat-s/rstudioSettings/master/inst/rstudio_bindings-minimal.json")
+    keybindings <- jsonlite::fromJSON("https://raw.githubusercontent.com/pat-s/rstudioSettings/master/inst/rstudio-bindings-minimal.json")
     general <- jsonlite::fromJSON("https://raw.githubusercontent.com/pat-s/rstudioSettings/master/inst/rstudio-prefs-minimal.json")
   }
   # install on user machine ----------------------------------------------------
