@@ -90,9 +90,9 @@ fun_with_spinner <- function() {
 
   switch(Sys.info()[["sysname"]],
     Windows = {
-      dir.create("~/../AppData/Roaming/RStudio/keybindings", showWarnings = FALSE)
+      dir.create("~/AppData/Roaming/RStudio/keybindings", showWarnings = FALSE)
       jsonlite::write_json(keybindings,
-        "~/../AppData/Roaming/RStudio/keybindings/rstudio_bindings.json",
+        "~/AppData/Roaming/RStudio/keybindings/rstudio_bindings.json",
         pretty = TRUE, , auto_unbox = TRUE
       )
     },
@@ -115,7 +115,7 @@ fun_with_spinner <- function() {
   switch(Sys.info()[["sysname"]],
     Windows = {
       jsonlite::write_json(general,
-        "~/../AppData/Roaming/RStudio/rstudio-prefs.json",
+        "~/AppData/Roaming/RStudio/rstudio-prefs.json",
         pretty = TRUE, auto_unbox = TRUE
       )
     },
@@ -137,7 +137,7 @@ fun_with_spinner <- function() {
     switch(Sys.info()[["sysname"]],
       Windows = {
         jsonlite::write_json(addins,
-          "~/../AppData/Roaming/RStudio/keybindings/addins.json",
+          "~/AppData/Roaming/RStudio/keybindings/addins.json",
           pretty = TRUE, auto_unbox = TRUE
         )
       },
