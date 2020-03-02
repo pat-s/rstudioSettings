@@ -158,6 +158,7 @@ fun_with_spinner <- function() {
   }
   sp1$finish()
 }
+fun_with_spinner()
 
 rstudioapi::restartSession()
 
