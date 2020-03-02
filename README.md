@@ -12,5 +12,10 @@ Two options are available:
 
 The latter installs R packages for addins I use and is tailored towards my personal RStudio / R package setup.
 
-THe config files live in `inst/`.
+The config files live in `inst/`.
 
+Call the following to start the process
+
+```r
+source("https://raw.githubusercontent.com/pat-s/rstudioSettings/master/R/install.R")
+```
