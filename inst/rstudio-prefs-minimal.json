@@ -1,0 +1,20 @@
+{
+    "save_workspace": "never",
+    "highlight_selected_line": true,
+    "syntax_color_console": true,
+    "highlight_r_function_calls": true,
+    "auto_append_newline": true,
+    "strip_trailing_whitespace": true,
+    "check_arguments_to_r_function_calls": true,
+    "warn_variable_defined_but_not_used": true,
+    "busy_detection": "never",
+    "save_files_before_build": true,
+    "pdf_previewer": "none",
+    "show_invisibles": true,
+    "rmd_chunk_output_inline": false,
+    "show_rmd_render_command": true,
+    "real_time_spellchecking": true,
+    "rmd_viewer_type": "pane",
+    "source_with_echo": true,
+    "show_hidden_files": true
+}

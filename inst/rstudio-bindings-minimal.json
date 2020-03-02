@@ -1,0 +1,15 @@
+{
+    "goToFileFunction": "Ctrl+P",
+    "insertPipeOperator": "Ctrl+O",
+    "restartR": "Ctrl+R",
+    "activateTerminal": "Ctrl+3",
+    "newTerminal": "Ctrl+4",
+    "previousTerminal": "Ctrl+5",
+    "nextTerminal": "Ctrl+6",
+    "sendTerminalToEditor": "",
+    "activateVcs": "Ctrl+7",
+    "switchToTab": "Ctrl+T",
+    "previousTab": "Ctrl+N",
+    "nextTab": "Ctrl+M",
+    "closeAllTerminals": "Alt+Shift+S"
+}
