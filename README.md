@@ -12,3 +12,5 @@ Two options are available:
 
 The latter installs R packages for addins I use and is tailored towards my personal RStudio / R package setup.
 
+THe config files live in `inst/`.
+
