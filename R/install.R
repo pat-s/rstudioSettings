@@ -91,21 +91,21 @@ fun_with_spinner <- function() {
 
   switch(Sys.info()[["sysname"]],
     Windows = {
-      fs::dir_create("~/AppData/Roaming/RStudio/keybindings", showWarnings = FALSE)
+      fs::dir_create("~/AppData/Roaming/RStudio/keybindings", recurse = TRUE)
       jsonlite::write_json(keybindings,
         fs::path_expand("~/AppData/Roaming/RStudio/keybindings/rstudio_bindings.json"),
         pretty = TRUE, auto_unbox = TRUE
       )
     },
     Linux = {
-      fs::dir_create("~/.config/rstudio/keybindings", showWarnings = FALSE)
+      fs::dir_create("~/.config/rstudio/keybindings", recurse = TRUE)
       jsonlite::write_json(keybindings,
         fs::path_expand("~/.config/rstudio/keybindings/rstudio_bindings.json"),
         pretty = TRUE, auto_unbox = TRUE
       )
     },
     Darwin = {
-      fs::dir_create("~/.config/rstudio/keybindings", showWarnings = FALSE)
+      fs::dir_create("~/.config/rstudio/keybindings", recurse = TRUE)
       jsonlite::write_json(keybindings,
         fs::path_expand("~/.config/rstudio/keybindings/rstudio_bindings.json"),
         pretty = TRUE, auto_unbox = TRUE
