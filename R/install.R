@@ -22,7 +22,7 @@ if (minimal != 1) {
   Sys.setenv("R_REMOTES_UPGRADE" = "always")
   options("install.packages.compile.from.source" = "no")
   remotes::install_github("gadenbuie/rsthemes")
-  rsthemes::install_rsthemes()
+  rsthemes::install_rsthemes(include_base16 = TRUE)
   rstudioapi::applyTheme("One Light {rsthemes}")
 
   remotes::install_github("krlmlr/fledge")
@@ -32,7 +32,7 @@ if (minimal != 1) {
   remotes::install_github("lorenzwalthert/teamtools")
   remotes::install_github("pat-s/styler@mlr-style")
   remotes::install_github("mine-cetinkaya-rundel/addmins")
-  install.packages(c("reprex", "remotes", "startup"))
+  install.packages(c("reprex"))
 }
 
 # Check if RStudio > 1.3 is installed ------------------------------------------
