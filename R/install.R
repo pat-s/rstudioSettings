@@ -80,8 +80,8 @@ switch(Sys.info()[["sysname"]],
         {.file {win_dir}/keybindings/addins.json}.")
     # rstudio-prefs
     fs::file_move(
-      glue::glue("{win_dir}/keybindings/rstudio-prefs.json"),
-      glue::glue("{win_dir}/keybindings/rstudio-prefs.json.bak")
+      glue::glue("{win_dir}/rstudio-prefs.json"),
+      glue::glue("{win_dir}/rstudio-prefs.json.bak")
     )
     cli::cli_alert_success("Backed up old {.file rstudio-prefs.json} to 
         {.file {win_dir}/rstudio-prefs.json.bak}.")
