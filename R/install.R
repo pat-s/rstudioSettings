@@ -19,8 +19,10 @@ if (!requireNamespace("cli", quietly = TRUE)) install.packages("cli")
 if (!requireNamespace("fs", quietly = TRUE)) install.packages("fs")
 if (!requireNamespace("glue", quietly = TRUE)) install.packages("glue")
 
+# never upgrade packages during remotes install to avoid user input
+Sys.setenv("R_REMOTES_UPGRADE" = "never")
+
 if (minimal != 1) {
-  # Sys.setenv("R_REMOTES_UPGRADE" = "always")
   options("install.packages.compile.from.source" = "no")
   remotes::install_github("gadenbuie/rsthemes")
   rsthemes::install_rsthemes(include_base16 = TRUE)
