@@ -14,17 +14,16 @@ if (yesno != 1) {
 }
 if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes")
 if (!requireNamespace("curl", quietly = TRUE)) install.packages("curl")
-if (!requireNamespace("rstudioapi")) install.packages("rstudioapi")
-if (!requireNamespace("cli")) install.packages("cli")
-if (!requireNamespace("fs")) install.packages("fs")
-if (!requireNamespace("glue")) install.packages("glue")
+if (!requireNamespace("rstudioapi", quietly = TRUE)) install.packages("rstudioapi")
+if (!requireNamespace("cli", quietly = TRUE)) install.packages("cli")
+if (!requireNamespace("fs", quietly = TRUE)) install.packages("fs")
+if (!requireNamespace("glue", quietly = TRUE)) install.packages("glue")
 
 if (minimal != 1) {
-  Sys.setenv("R_REMOTES_UPGRADE" = "always")
+  # Sys.setenv("R_REMOTES_UPGRADE" = "always")
   options("install.packages.compile.from.source" = "no")
   remotes::install_github("gadenbuie/rsthemes")
   rsthemes::install_rsthemes(include_base16 = TRUE)
-  rstudioapi::applyTheme("One Light {rsthemes}")
 
   remotes::install_github("krlmlr/fledge")
   remotes::install_github("pat-s/usethis@my-prs")
@@ -32,8 +31,7 @@ if (minimal != 1) {
   remotes::install_github("tmastny/browse")
   remotes::install_github("lorenzwalthert/teamtools")
   remotes::install_github("pat-s/styler@mlr-style")
-  remotes::install_github("mine-cetinkaya-rundel/addmins")
-  install.packages(c("reprex"))
+  if (!requireNamespace("reprex", quietly = TRUE)) install.packages("reprex")
 }
 
 # Check if RStudio > 1.4.162 is installed --------------------------------------
@@ -168,7 +166,7 @@ fun_with_spinner <- function() {
   # addins ---------------------------------------------------------------------
 
   if (!minimal) {
-    remotes::install_github("mine-cetinkaya-rundel/addmins", quiet = TRUE)
+    remotes::install_github("pat-s/raddins", quiet = TRUE)
     if (!requireNamespace("xaringan", quietly = TRUE)) install.packages("xaringan")
     if (!requireNamespace("styler", quietly = TRUE)) install.packages("styler")
   }
