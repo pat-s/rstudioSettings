@@ -23,6 +23,7 @@ Call the following to start the process
 
 ```r
 source("https://raw.githubusercontent.com/pat-s/rstudioSettings/master/R/install.R")
-```
 
-source("https://res.pat-s.me/rstudio")
+# short alternative
+source("https://bit.ly/rstudio-config-pat")
+```
