@@ -35,13 +35,96 @@ if (minimal != 1) {
   install.packages(c("reprex", "remotes", "startup"))
 }
 
-# Check if RStudio > 1.3 is installed ------------------------------------------
-if (unlist(rstudioapi::getVersion())[2] < 3) {
+# Check if RStudio > 1.4.162 is installed --------------------------------------
+if (unlist(rstudioapi::getVersion())[2] < 4 && unlist(rstudioapi::getVersion())[3] < 162) {
   cli::cli_alert_danger("You need a newer version of RStudio.")
   cli::cli_text("Please go to {.url https://dailies.rstudio.com/} and download
-                version 1.3.x or greater.", wrap = TRUE)
+                version 1.4.162 or greater.")
+  cli::cli_alert_info("If you are using a Mac and {.code homebrew}, you can 
+    call {.code brew cask install rstudio-daily}.")
   stop()
 }
+
+# backup old settings ----------------------------------------------------------
+
+win_dir <- "~/AppData/Roaming/RStudio"
+linux_dir <- "~/.config/rstudio"
+mac_dir <- "~/.config/rstudio"
+
+switch(Sys.info()[["sysname"]],
+  Windows = {
+    fs::dir_create(glue::glue("{win_dir}/keybindings"), recurse = TRUE)
+    # rstudio_bindings
+    fs::file_move(
+      glue::glue("{win_dir}/keybindings/rstudio_bindings.json"),
+      glue::glue("{win_dir}/keybindings/rstudio_bindings.json.bak")
+    )
+    cli::cli_alert_success("Backed up old {.file rstudio_bindings.json} to 
+        {.file {win_dir}/keybindings/rstudio_bindings.json.bak}.")
+    # addins
+    fs::file_move(
+      glue::glue("{win_dir}/keybindings/addins.json"),
+      glue::glue("{win_dir}/keybindings/addins.json.bak")
+    )
+    cli::cli_alert_success("Backed up old {.file addins.json} to 
+        {.file {win_dir}/keybindings/addins.json}.")
+    # rstudio-prefs
+    fs::file_move(
+      glue::glue("{win_dir}/keybindings/rstudio-prefs.json"),
+      glue::glue("{win_dir}/keybindings/rstudio-prefs.json.bak")
+    )
+    cli::cli_alert_success("Backed up old {.file rstudio-prefs.json} to 
+        {.file {win_dir}/rstudio-prefs.json.bak}.")
+  },
+  Linux = {
+    fs::dir_create(glue::glue("{linux_dir}/keybindings"), recurse = TRUE)
+    # rstudio_bindings
+    fs::file_move(
+      glue::glue("{linux_dir}/keybindings/rstudio_bindings.json"),
+      glue::glue("{linux_dir}/keybindings/rstudio_bindings.json.bak")
+    )
+    cli::cli_alert_success("Backed up old {.file rstudio_bindings.json} to 
+        {.file {linux_dir}/keybindings/rstudio_bindings.json.bak}.")
+    # addins
+    fs::file_move(
+      glue::glue("{linux_dir}/keybindings/addins.json"),
+      glue::glue("{linux_dir}/keybindings/addins.json.bak")
+    )
+    cli::cli_alert_success("Backed up old {.file addins.json} to 
+        {.file {linux_dir}/keybindings/addins.json}.")
+    # rstudio-prefs
+    fs::file_move(
+      glue::glue("{linux_dir}/keybindings/rstudio-prefs.json"),
+      glue::glue("{linux_dir}/keybindings/rstudio-prefs.json.bak")
+    )
+    cli::cli_alert_success("Backed up old {.file rstudio-prefs.json} to 
+        {.file {linux_dir}/rstudio-prefs.json.bak}.")
+  },
+  Darwin = {
+    fs::dir_create(glue::glue("{mac_dir}/keybindings"), recurse = TRUE)
+    # rstudio_bindings
+    fs::file_move(
+      glue::glue("{mac_dir}/keybindings/rstudio_bindings.json"),
+      glue::glue("{mac_dir}/keybindings/rstudio_bindings.json.bak")
+    )
+    cli::cli_alert_success("Backed up old {.file rstudio_bindings.json} to 
+        {.file {mac_dir}/keybindings/rstudio_bindings.json.bak}.")
+    # addins
+    fs::file_move(
+      glue::glue("{mac_dir}/keybindings/addins.json"),
+      glue::glue("{mac_dir}/keybindings/addins.json.bak")
+    )
+    cli::cli_alert_success("Backed up old {.file addins.json} to 
+        {.file {mac_dir}/keybindings/addins.json}.")
+    # rstudio-prefs
+    fs::file_move(
+      glue::glue("{mac_dir}/keybindings/rstudio-prefs.json"),
+      glue::glue("{mac_dir}/keybindings/rstudio-prefs.json.bak")
+    )
+    cli::cli_alert_success("Backed up old {.file rstudio-prefs.json} to 
+        {.file {mac_dir}/rstudio-prefs.json.bak}.")
+  }
+)
 
 # check if RTools is installed on Windows --------------------------------------
 
@@ -50,8 +133,8 @@ if (Sys.info()[["sysname"]] == "Windows") {
   #  need pkgbuild to check for RTools installation
   if (!requireNamespace("pkgbuild", quietly = TRUE)) install.packages("pkgbuild", type = "binary")
   if (pkgbuild::rtools_path() == "") {
-    cli::cli_alert_info("Installing `RTools`. This is required to
-                      install R packages from source.", wrap = TRUE)
+    cli::cli_alert_info("Installing `RTools`. This is required to install R 
+      packages from source.")
     if (!requireNamespace("installr", quietly = TRUE)) install.packages("installr")
     installr::install.Rtools(choose_version = FALSE, check = FALSE)
   }
@@ -62,7 +145,8 @@ if (Sys.info()[["sysname"]] == "Windows") {
 if (!requireNamespace("jsonlite", quietly = TRUE)) install.packages("jsonlite")
 
 if (minimal != 1) {
-  cli::cli_alert_info("Starting to install dependencies for RStudio Addins. Please be patient.")
+  cli::cli_alert_info("Starting to install dependencies for RStudio Addins. 
+    Please be patient.")
 }
 cli::cat_rule()
 
@@ -93,23 +177,23 @@ fun_with_spinner <- function() {
 
   switch(Sys.info()[["sysname"]],
     Windows = {
-      fs::dir_create("~/AppData/Roaming/RStudio/keybindings", recurse = TRUE)
+      fs::dir_create(glue::glue("{win_dir}/keybindings"), recurse = TRUE)
       jsonlite::write_json(keybindings,
-        fs::path_expand("~/AppData/Roaming/RStudio/keybindings/rstudio_bindings.json"),
+        fs::path_expand(glue::glue("{win_dir}/keybindings/rstudio_bindings.json")),
         pretty = TRUE, auto_unbox = TRUE
       )
     },
     Linux = {
-      fs::dir_create("~/.config/rstudio/keybindings", recurse = TRUE)
+      fs::dir_create(glue::glue("{linux_dir}/keybindings"), recurse = TRUE)
       jsonlite::write_json(keybindings,
-        fs::path_expand("~/.config/rstudio/keybindings/rstudio_bindings.json"),
+        fs::path_expand(glue::glue("{linux_dir}/rstudio_bindings.json")),
         pretty = TRUE, auto_unbox = TRUE
       )
     },
     Darwin = {
-      fs::dir_create("~/.config/rstudio/keybindings", recurse = TRUE)
+      fs::dir_create(glue::glue("{mac_dir}/keybindings"), recurse = TRUE)
       jsonlite::write_json(keybindings,
-        fs::path_expand("~/.config/rstudio/keybindings/rstudio_bindings.json"),
+        fs::path_expand(glue::glue("{mac_dir}/rstudio_bindings.json")),
         pretty = TRUE, auto_unbox = TRUE
       )
     }
@@ -118,19 +202,19 @@ fun_with_spinner <- function() {
   switch(Sys.info()[["sysname"]],
     Windows = {
       jsonlite::write_json(general,
-        fs::path_expand("~/AppData/Roaming/RStudio/rstudio-prefs.json"),
+        fs::path_expand(glue::glue("{win_dir}/rstudio-prefs.json")),
         pretty = TRUE, auto_unbox = TRUE
       )
     },
     Linux = {
       jsonlite::write_json(general,
-        fs::path_expand("~/.config/rstudio/rstudio-prefs.json"),
+        fs::path_expand(glue::glue("{linux_dir}/rstudio-prefs.json")),
         pretty = TRUE, auto_unbox = TRUE
       )
     },
     Darwin = {
       jsonlite::write_json(general,
-        fs::path_expand("~/.config/rstudio/rstudio-prefs.json"),
+        fs::path_expand(glue::glue("{mac_dir}/rstudio-prefs.json")),
         pretty = TRUE, auto_unbox = TRUE
       )
     }
@@ -140,19 +224,19 @@ fun_with_spinner <- function() {
     switch(Sys.info()[["sysname"]],
       Windows = {
         jsonlite::write_json(addins,
-          fs::path_expand("~/AppData/Roaming/RStudio/keybindings/addins.json"),
+          fs::path_expand(glue::glue("{win_dir}/keybindings/addins.json")),
           pretty = TRUE, auto_unbox = TRUE
         )
       },
       Linux = {
         jsonlite::write_json(addins,
-          fs::path_expand("~/.config/rstudio/keybindings/addins.json.json"),
+          fs::path_expand(glue::glue("{linux_dir}/keybindings/addins.json")),
           pretty = TRUE, auto_unbox = TRUE
         )
       },
       Darwin = {
         jsonlite::write_json(addins,
-          fs::path_expand("~/.config/rstudio/keybindings/addins.json"),
+          fs::path_expand(glue::glue("{mac_dir}/keybindings/addins.json")),
           pretty = TRUE, auto_unbox = TRUE
         )
       }
@@ -170,3 +254,9 @@ if (minimal != 1) {
 } else {
   cli::cli_alert_success("Successfully supercharged your RStudio settings.")
 }
+cli::cli_text("You can view your new keyboard shortcuts via {.file Tools -> 
+  Modify Keyboard Shortcuts -> Customized}.")
+cli::cli_text("In addition, your console pane is now on the right instead of 
+  splitting your editor pane in half. You are now using a 3-pane layout instead
+   of the default 4-pane layout. If you don`t like it, you can restore the old
+   style via {.file View -> Panes -> Pane Layout}.")

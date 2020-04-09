@@ -1,7 +1,11 @@
 {
     "styler::style_active_file": "Ctrl+Y",
-    "addmins::insert_dashes": "Ctrl+8",
-    "xaringan::inf_mr": "Ctrl+M",
     "drake::rs_addin_loadd": "Ctrl+K",
-    "browse::browse": "Ctrl+B"
-}
+    "addmins::insert_dashes": "Ctrl+8",
+    "drake::rs_addin_r_outdated": "Ctrl+Shift+O",
+    "drake::rs_addin_r_vis_drake_graph": "Ctrl+Shift+V",
+    "drake::rs_addin_r_make": "Ctrl+Alt+W",
+    "browse::browse": "Ctrl+B",
+    "raddins::reload_project": "Cmd+R",
+    "raddins::open_github": "Shift+Cmd+G"
+}⏎  
