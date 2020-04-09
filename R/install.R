@@ -37,13 +37,22 @@ if (minimal != 1) {
 }
 
 # Check if RStudio > 1.4.162 is installed --------------------------------------
-if (unlist(rstudioapi::getVersion())[2] < 4 && unlist(rstudioapi::getVersion())[3] < 162) {
+if (unlist(rstudioapi::getVersion())[2] < 4) {
+  version_ok <- FALSE
+} else {
+  if (unlist(rstudioapi::getVersion())[3] < 162) {
+    version_ok <- FALSE
+  }
+  version_ok <- TRUE
+}
+
+if (!version_ok) {
   cli::cli_alert_danger("You need a newer version of RStudio.")
   cli::cli_text("Please go to {.url https://dailies.rstudio.com/} and download
                 version 1.4.162 or greater.")
   cli::cli_alert_info("If you are using a Mac and {.code homebrew}, you can 
-    call {.code brew cask install rstudio-daily}.")
-  stop()
+    call {.code brew cask install rstudio-daily}.", wrap = TRUE)
+  stop("RStudio version too old.", call. = FALSE)
 }
 
 # backup old settings ----------------------------------------------------------
