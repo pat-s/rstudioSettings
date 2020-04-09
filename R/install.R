@@ -65,74 +65,101 @@ switch(Sys.info()[["sysname"]],
   Windows = {
     fs::dir_create(glue::glue("{win_dir}/keybindings"), recurse = TRUE)
     # rstudio_bindings
-    fs::file_move(
-      glue::glue("{win_dir}/keybindings/rstudio_bindings.json"),
-      glue::glue("{win_dir}/keybindings/rstudio_bindings.json.bak")
-    )
-    cli::cli_alert_success("Backed up old {.file rstudio_bindings.json} to 
+    if (fs::file_exists(glue::glue("{win_dir}/keybindings/rstudio_bindings.json"))) {
+      fs::file_copy(
+        glue::glue("{win_dir}/keybindings/rstudio_bindings.json"),
+        glue::glue("{win_dir}/keybindings/rstudio_bindings.json.bak"),
+        overwrite = TRUE
+      )
+      cli::cli_alert_success("Backed up old {.file rstudio_bindings.json} to 
         {.file {win_dir}/keybindings/rstudio_bindings.json.bak}.")
+    }
     # addins
-    fs::file_move(
-      glue::glue("{win_dir}/keybindings/addins.json"),
-      glue::glue("{win_dir}/keybindings/addins.json.bak")
-    )
-    cli::cli_alert_success("Backed up old {.file addins.json} to 
+    if (fs::file_exists(glue::glue("{win_dir}/keybindings/addins.json"))) {
+      fs::file_copy(
+        glue::glue("{win_dir}/keybindings/addins.json"),
+        glue::glue("{win_dir}/keybindings/addins.json.bak"),
+        overwrite = TRUE
+      )
+      cli::cli_alert_success("Backed up old {.file addins.json} to 
         {.file {win_dir}/keybindings/addins.json}.")
+    }
     # rstudio-prefs
-    fs::file_move(
-      glue::glue("{win_dir}/rstudio-prefs.json"),
-      glue::glue("{win_dir}/rstudio-prefs.json.bak")
-    )
-    cli::cli_alert_success("Backed up old {.file rstudio-prefs.json} to 
+    if (fs::file_exists(glue::glue("{win_dir}/rstudio-prefs.json"))) {
+      fs::file_copy(
+        glue::glue("{win_dir}/rstudio-prefs.json"),
+        glue::glue("{win_dir}/rstudio-prefs.json.bak"),
+        overwrite = TRUE
+      )
+      cli::cli_alert_success("Backed up old {.file rstudio-prefs.json} to 
         {.file {win_dir}/rstudio-prefs.json.bak}.")
+    }
   },
   Linux = {
     fs::dir_create(glue::glue("{linux_dir}/keybindings"), recurse = TRUE)
     # rstudio_bindings
-    fs::file_move(
-      glue::glue("{linux_dir}/keybindings/rstudio_bindings.json"),
-      glue::glue("{linux_dir}/keybindings/rstudio_bindings.json.bak")
-    )
-    cli::cli_alert_success("Backed up old {.file rstudio_bindings.json} to 
+    if (fs::file_exists(glue::glue("{linux_dir}/keybindings/rstudio_bindings.json"))) {
+      fs::file_copy(
+        glue::glue("{linux_dir}/keybindings/rstudio_bindings.json"),
+        glue::glue("{linux_dir}/keybindings/rstudio_bindings.json.bak"),
+        overwrite = TRUE
+      )
+      cli::cli_alert_success("Backed up old {.file rstudio_bindings.json} to 
         {.file {linux_dir}/keybindings/rstudio_bindings.json.bak}.")
+    }
     # addins
-    fs::file_move(
-      glue::glue("{linux_dir}/keybindings/addins.json"),
-      glue::glue("{linux_dir}/keybindings/addins.json.bak")
-    )
-    cli::cli_alert_success("Backed up old {.file addins.json} to 
+    if (fs::file_exists(glue::glue("{linux_dir}/keybindings/addins.json"))) {
+      fs::file_copy(
+        glue::glue("{linux_dir}/keybindings/addins.json"),
+        glue::glue("{linux_dir}/keybindings/addins.json.bak"),
+        overwrite = TRUE
+      )
+      cli::cli_alert_success("Backed up old {.file addins.json} to 
         {.file {linux_dir}/keybindings/addins.json}.")
+    }
     # rstudio-prefs
-    fs::file_move(
-      glue::glue("{linux_dir}/keybindings/rstudio-prefs.json"),
-      glue::glue("{linux_dir}/keybindings/rstudio-prefs.json.bak")
-    )
-    cli::cli_alert_success("Backed up old {.file rstudio-prefs.json} to 
+    if (fs::file_exists(glue::glue("{linux_dir}/rstudio-prefs.json"))) {
+      fs::file_copy(
+        glue::glue("{linux_dir}/keybindings/rstudio-prefs.json"),
+        glue::glue("{linux_dir}/keybindings/rstudio-prefs.json.bak"),
+        overwrite = TRUE
+      )
+      cli::cli_alert_success("Backed up old {.file rstudio-prefs.json} to 
         {.file {linux_dir}/rstudio-prefs.json.bak}.")
+    }
   },
   Darwin = {
     fs::dir_create(glue::glue("{mac_dir}/keybindings"), recurse = TRUE)
     # rstudio_bindings
-    fs::file_move(
-      glue::glue("{mac_dir}/keybindings/rstudio_bindings.json"),
-      glue::glue("{mac_dir}/keybindings/rstudio_bindings.json.bak")
-    )
-    cli::cli_alert_success("Backed up old {.file rstudio_bindings.json} to 
+    if (fs::file_exists(glue::glue("{mac_dir}/keybindings/rstudio_bindings.json"))) {
+      fs::file_copy(
+        glue::glue("{mac_dir}/keybindings/rstudio_bindings.json"),
+        glue::glue("{mac_dir}/keybindings/rstudio_bindings.json.bak"),
+        overwrite = TRUE
+      )
+      cli::cli_alert_success("Backed up old {.file rstudio_bindings.json} to 
         {.file {mac_dir}/keybindings/rstudio_bindings.json.bak}.")
+    }
     # addins
-    fs::file_move(
-      glue::glue("{mac_dir}/keybindings/addins.json"),
-      glue::glue("{mac_dir}/keybindings/addins.json.bak")
-    )
-    cli::cli_alert_success("Backed up old {.file addins.json} to 
+    if (fs::file_exists(glue::glue("{mac_dir}/keybindings/addins.json"))) {
+      fs::file_copy(
+        glue::glue("{mac_dir}/keybindings/addins.json"),
+        glue::glue("{mac_dir}/keybindings/addins.json.bak"),
+        overwrite = TRUE
+      )
+      cli::cli_alert_success("Backed up old {.file addins.json} to 
         {.file {mac_dir}/keybindings/addins.json}.")
+    }
     # rstudio-prefs
-    fs::file_move(
-      glue::glue("{mac_dir}/keybindings/rstudio-prefs.json"),
-      glue::glue("{mac_dir}/keybindings/rstudio-prefs.json.bak")
-    )
-    cli::cli_alert_success("Backed up old {.file rstudio-prefs.json} to 
+    if (fs::file_exists(glue::glue("{mac_dir}/rstudio-prefs.json"))) {
+      fs::file_copy(
+        glue::glue("{mac_dir}/keybindings/rstudio-prefs.json"),
+        glue::glue("{mac_dir}/keybindings/rstudio-prefs.json.bak"),
+        overwrite = TRUE
+      )
+      cli::cli_alert_success("Backed up old {.file rstudio-prefs.json} to 
         {.file {mac_dir}/rstudio-prefs.json.bak}.")
+    }
   }
 )
 
