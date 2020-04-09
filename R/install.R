@@ -17,6 +17,7 @@ if (!requireNamespace("curl", quietly = TRUE)) install.packages("curl")
 if (!requireNamespace("rstudioapi")) install.packages("rstudioapi")
 if (!requireNamespace("cli")) install.packages("cli")
 if (!requireNamespace("fs")) install.packages("fs")
+if (!requireNamespace("glue")) install.packages("glue")
 
 if (minimal != 1) {
   Sys.setenv("R_REMOTES_UPGRADE" = "always")
