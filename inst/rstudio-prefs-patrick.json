@@ -1,21 +1,31 @@
 {
   "panes": {
-    "quadrants": ["Source", "TabSet1", "Console", "TabSet2"],
-    "tabSet1": ["Presentation"],
-    "tabSet2": [
-      "Environment",
-      "History",
-      "Files",
-      "Plots",
-      "Packages",
-      "Help",
-      "Build",
-      "VCS",
-      "Viewer"
-    ],
-    "hiddenTabSet": ["Connections", "Tutorial"],
-    "console_left_on_top": false,
-    "console_right_on_top": true
+      "quadrants": [
+          "Source",
+          "TabSet1",
+          "Console",
+          "TabSet2"
+      ],
+      "tabSet1": [
+          "Presentation"
+      ],
+      "tabSet2": [
+          "Environment",
+          "History",
+          "Files",
+          "Plots",
+          "Packages",
+          "Help",
+          "Build",
+          "VCS",
+          "Viewer"
+      ],
+      "hiddenTabSet": [
+          "Connections",
+          "Tutorial"
+      ],
+      "console_left_on_top": false,
+      "console_right_on_top": true
   },
   "save_workspace": "never",
   "highlight_selected_line": true,
@@ -25,17 +35,22 @@
   "strip_trailing_whitespace": true,
   "check_arguments_to_r_function_calls": true,
   "warn_variable_defined_but_not_used": true,
+  "editor_keybindings": "vim",
   "busy_detection": "never",
+  "editor_theme": "base16 Tomorrow {rsthemes}",
   "save_files_before_build": true,
-  "pdf_previewer": "none",
+  "pdf_previewer": "system",
   "show_invisibles": true,
   "rmd_chunk_output_inline": false,
   "show_rmd_render_command": true,
-  "real_time_spellchecking": true,
+  "show_hidden_files": true,
   "rmd_viewer_type": "pane",
   "source_with_echo": true,
-  "show_hidden_files": true,
+  "default_project_location": "~",
+  "default_latex_program": "XeLaTeX",
+  "jobs_tab_visibility": "shown",
+  "tab_multiline_completion": true,
   "show_indent_guides": true,
-  "editor_theme": "base16 Tomorrow {rsthemes}",
-  "editor_keybindings": "vim"
+  "style_diagnostics": true,
+  "terminal_track_environment": false
 }
