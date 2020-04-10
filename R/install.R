@@ -190,6 +190,7 @@ cli::cat_rule()
 # setup spinner
 sp1 <- cli::make_spinner()
 fun_with_spinner <- function() {
+
   sp1$spin()
 
   # addins ---------------------------------------------------------------------
@@ -236,23 +237,24 @@ fun_with_spinner <- function() {
     }
   )
 
+  # not unboxing here since an unboxed single value in a tabSet crashes RStudio
   switch(Sys.info()[["sysname"]],
     Windows = {
       jsonlite::write_json(general,
         fs::path_expand(glue::glue("{win_dir}/rstudio-prefs.json")),
-        pretty = TRUE, auto_unbox = TRUE
+        pretty = TRUE, auto_unbox = FALSE
       )
     },
     Linux = {
       jsonlite::write_json(general,
         fs::path_expand(glue::glue("{linux_dir}/rstudio-prefs.json")),
-        pretty = TRUE, auto_unbox = TRUE
+        pretty = TRUE, auto_unbox = FALSE
       )
     },
     Darwin = {
       jsonlite::write_json(general,
         fs::path_expand(glue::glue("{mac_dir}/rstudio-prefs.json")),
-        pretty = TRUE, auto_unbox = TRUE
+        pretty = TRUE, auto_unbox = FALSE
       )
     }
   )

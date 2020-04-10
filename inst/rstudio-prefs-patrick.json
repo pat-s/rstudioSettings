@@ -6,7 +6,9 @@
           "Console",
           "TabSet2"
       ],
-      "tabSet1": ["Presentation"],
+      "tabSet1": [
+        "Presentation"
+      ],
       "tabSet2": [
           "Environment",
           "History",
