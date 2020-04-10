@@ -223,14 +223,14 @@ fun_with_spinner <- function() {
     Linux = {
       fs::dir_create(glue::glue("{linux_dir}/keybindings"), recurse = TRUE)
       jsonlite::write_json(keybindings,
-        fs::path_expand(glue::glue("{linux_dir}/rstudio_bindings.json")),
+        fs::path_expand(glue::glue("{linux_dir}/keybindings/rstudio_bindings.json")),
         pretty = TRUE, auto_unbox = TRUE
       )
     },
     Darwin = {
       fs::dir_create(glue::glue("{mac_dir}/keybindings"), recurse = TRUE)
       jsonlite::write_json(keybindings,
-        fs::path_expand(glue::glue("{mac_dir}/rstudio_bindings.json")),
+        fs::path_expand(glue::glue("{mac_dir}/keybindings/rstudio_bindings.json")),
         pretty = TRUE, auto_unbox = TRUE
       )
     }
