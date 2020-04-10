@@ -120,8 +120,8 @@ switch(Sys.info()[["sysname"]],
     # rstudio-prefs
     if (fs::file_exists(glue::glue("{linux_dir}/rstudio-prefs.json"))) {
       fs::file_copy(
-        glue::glue("{linux_dir}/keybindings/rstudio-prefs.json"),
-        glue::glue("{linux_dir}/keybindings/rstudio-prefs.json.bak"),
+        glue::glue("{linux_dir}/rstudio-prefs.json"),
+        glue::glue("{linux_dir}/rstudio-prefs.json.bak"),
         overwrite = TRUE
       )
       cli::cli_alert_success("Backed up old {.file rstudio-prefs.json} to 
@@ -153,8 +153,8 @@ switch(Sys.info()[["sysname"]],
     # rstudio-prefs
     if (fs::file_exists(glue::glue("{mac_dir}/rstudio-prefs.json"))) {
       fs::file_copy(
-        glue::glue("{mac_dir}/keybindings/rstudio-prefs.json"),
-        glue::glue("{mac_dir}/keybindings/rstudio-prefs.json.bak"),
+        glue::glue("{mac_dir}/rstudio-prefs.json"),
+        glue::glue("{mac_dir}/rstudio-prefs.json.bak"),
         overwrite = TRUE
       )
       cli::cli_alert_success("Backed up old {.file rstudio-prefs.json} to 
