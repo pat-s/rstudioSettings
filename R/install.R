@@ -242,19 +242,19 @@ fun_with_spinner <- function() {
     Windows = {
       jsonlite::write_json(general,
         fs::path_expand(glue::glue("{win_dir}/rstudio-prefs.json")),
-        pretty = TRUE, auto_unbox = FALSE
+        pretty = TRUE, auto_unbox = TRUE
       )
     },
     Linux = {
       jsonlite::write_json(general,
         fs::path_expand(glue::glue("{linux_dir}/rstudio-prefs.json")),
-        pretty = TRUE, auto_unbox = FALSE
+        pretty = TRUE, auto_unbox = TRUE
       )
     },
     Darwin = {
       jsonlite::write_json(general,
         fs::path_expand(glue::glue("{mac_dir}/rstudio-prefs.json")),
-        pretty = TRUE, auto_unbox = FALSE
+        pretty = TRUE, auto_unbox = TRUE
       )
     }
   )
