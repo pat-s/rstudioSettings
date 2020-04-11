@@ -204,12 +204,12 @@ fun_with_spinner <- function() {
   # scrape settings from gist ----------------------------------------------------
 
   if (minimal != 1) {
-    keybindings <- jsonlite::fromJSON("https://raw.githubusercontent.com/pat-s/rstudioSettings/master/inst/rstudio-bindings-patrick.json")
-    general <- jsonlite::fromJSON("https://raw.githubusercontent.com/pat-s/rstudioSettings/master/inst/rstudio-prefs-patrick.json")
-    addins <- jsonlite::fromJSON("https://raw.githubusercontent.com/pat-s/rstudioSettings/master/inst/addins.json")
+    keybindings <- jsonlite::read_json("https://raw.githubusercontent.com/pat-s/rstudioSettings/master/inst/rstudio-bindings-patrick.json")
+    general <- jsonlite::read_json("https://raw.githubusercontent.com/pat-s/rstudioSettings/master/inst/rstudio-prefs-patrick.json")
+    addins <- jsonlite::read_json("https://raw.githubusercontent.com/pat-s/rstudioSettings/master/inst/addins.json")
   } else {
-    keybindings <- jsonlite::fromJSON("https://raw.githubusercontent.com/pat-s/rstudioSettings/master/inst/rstudio-bindings-minimal.json")
-    general <- jsonlite::fromJSON("https://raw.githubusercontent.com/pat-s/rstudioSettings/master/inst/rstudio-prefs-minimal.json")
+    keybindings <- jsonlite::read_json("https://raw.githubusercontent.com/pat-s/rstudioSettings/master/inst/rstudio-bindings-minimal.json")
+    general <- jsonlite::read_json("https://raw.githubusercontent.com/pat-s/rstudioSettings/master/inst/rstudio-prefs-minimal.json")
   }
   # install on user machine ----------------------------------------------------
 
