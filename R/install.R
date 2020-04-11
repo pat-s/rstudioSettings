@@ -285,9 +285,8 @@ fun_with_spinner <- function() {
 }
 fun_with_spinner()
 
-rstudioapi::restartSession()
-
 cli::ansi_with_hidden_cursor(fun_with_spinner())
+
 if (minimal != 1) {
   cli::cli_alert_success("Successfully installed Patrick's RStudio settings.")
 } else {
@@ -299,3 +298,5 @@ cli::cli_text("In addition, your console pane is now on the right instead of
   splitting your editor pane in half. You are now using a 3-pane layout instead
    of the default 4-pane layout. If you don`t like it, you can restore the old
    style via {.file View -> Panes -> Pane Layout}.")
+
+cli::cli_alert("Please restart RStudio now.")
