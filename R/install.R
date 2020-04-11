@@ -293,7 +293,7 @@ if (minimal != 1) {
   cli::cli_alert_success("Successfully supercharged your RStudio settings.")
 }
 cli::cli_text("You can view your new keyboard shortcuts via {.file Tools -> 
-  Modify Keyboard Shortcuts -> Customized} or alternatively by executing {.code jsonlite::fromJSON('~/.config/rstudio/keybindings/rstudio_bindings.json')} (Linux, Mac) or {.code jsonlite::fromJSON('~/AppData/Roaming/RStudio/keybindings/rstudio_bindings.json')} (Windows).")
+  Modify Keyboard Shortcuts -> Customized} or alternatively by executing {.code jsonlite::fromJSON('~/.config/rstudio/keybindings/rstudio_bindings.json')} (Linux, Mac) or {.code jsonlite::fromJSON(fs::path_expand('~/AppData/Roaming/RStudio/keybindings/rstudio_bindings.json'))} (Windows, yes its more complicated...).")
 cli::cli_text("In addition, your console pane is now on the right instead of 
   splitting your editor pane in half. You are now using a 3-pane layout instead
    of the default 4-pane layout. If you don`t like it, you can restore the old
