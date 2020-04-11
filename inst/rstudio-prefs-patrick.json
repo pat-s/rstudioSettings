@@ -7,7 +7,7 @@
           "TabSet2"
       ],
       "tabSet1": [
-        "Presentation"
+        I("Presentation")
       ],
       "tabSet2": [
           "Environment",
