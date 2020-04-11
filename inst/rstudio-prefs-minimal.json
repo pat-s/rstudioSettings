@@ -1,29 +1,19 @@
 {
   "panes": {
-    "quadrants": [
-        "Source",
-        "TabSet1",
-        "Console",
-        "TabSet2"
-    ],
-    "tabSet1": [
-      I("Presentation")
-    ],
+    "quadrants": ["Source", "TabSet1", "Console", "TabSet2"],
+    "tabSet1": ["Presentation"],
     "tabSet2": [
-        "Environment",
-        "History",
-        "Files",
-        "Plots",
-        "Packages",
-        "Help",
-        "Build",
-        "VCS",
-        "Viewer"
+      "Environment",
+      "History",
+      "Files",
+      "Plots",
+      "Packages",
+      "Help",
+      "Build",
+      "VCS",
+      "Viewer"
     ],
-    "hiddenTabSet": [
-        "Connections",
-        "Tutorial"
-    ],
+    "hiddenTabSet": ["Connections", "Tutorial"],
     "console_left_on_top": false,
     "console_right_on_top": true
   },
