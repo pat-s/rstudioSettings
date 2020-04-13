@@ -1,0 +1,177 @@
+snippet lib
+	library(${1:package})
+
+snippet req
+	require(${1:package})
+
+snippet src
+	source("${1:file.R}")
+
+snippet ret
+	return(${1:code})
+
+snippet mat
+	matrix(${1:data}, nrow = ${2:rows}, ncol = ${3:cols})
+
+snippet sg
+	setGeneric("${1:generic}", function(${2:x, ...}) {
+		standardGeneric("${1:generic}")
+	})
+
+snippet sm
+	setMethod("${1:generic}", ${2:class}, function(${2:x, ...}) {
+		${0}
+	})
+
+snippet sc
+	setClass("${1:Class}", slots = c(${2:name = "type"}))
+
+snippet if
+	if (${1:condition}) {
+		${0}
+	}
+
+snippet el
+	else {
+		${0}
+	}
+
+snippet ei
+	else if (${1:condition}) {
+		${0}
+	}
+
+snippet fun
+	${1:name} <- function(${2:variables}) {
+		${0}
+	}
+
+snippet for
+	for (${1:variable} in ${2:vector}) {
+		${0}
+	}
+
+snippet while
+	while (${1:condition}) {
+		${0}
+	}
+
+snippet switch
+	switch (${1:object},
+		${2:case} = ${3:action}
+	)
+
+snippet apply
+	apply(${1:array}, ${2:margin}, ${3:...})
+
+snippet lapply
+	lapply(${1:list}, ${2:function})
+
+snippet sapply
+	sapply(${1:list}, ${2:function})
+
+snippet mapply
+	mapply(${1:function}, ${2:...})
+
+snippet tapply
+	tapply(${1:vector}, ${2:index}, ${3:function})
+
+snippet vapply
+	vapply(${1:list}, ${2:function}, FUN.VALUE = ${3:type}, ${4:...})
+
+snippet rapply
+	rapply(${1:list}, ${2:function})
+
+snippet ts
+	`r paste("#", date(), "------------------------------\n")`
+
+snippet shinyapp
+	library(shiny)
+
+	ui <- fluidPage(
+	  ${0}
+	)
+
+	server <- function(input, output, session) {
+
+	}
+
+	shinyApp(ui, server)
+
+snippet shinymod
+	${1:name}_UI <- function(id) {
+	  ns <- NS(id)
+	  tagList(
+		${0}
+	  )
+	}
+
+	${1:name} <- function(input, output, session) {
+
+	}
+
+snippet gc
+	gert::git_commit("${1:message}")
+
+snippet gca
+	gert::git_commit_all("${1:message}")
+
+snippet ph
+	gert::git_push()
+
+snippet pu
+	gert::git_pull()
+
+snippet grh
+	gert::git_reset(type = "hard")
+
+snippet gbd
+	gert::git_branch_delete("${1:branch}")
+
+snippet gbl
+	gert::git_branch_list()
+
+snippet mv
+	fs::file_move("${1:path}", "${1:path}")
+
+snippet cp
+	fs::file_copy("${1:path}", "${1:path}")
+
+snippet rm
+	fs::file_delete("${1:path}")
+
+snippet or
+	teamtools::open_repo("${1:repo}", newSession = FALSE)
+
+snippet nor
+	teamtools::open_repo("${1:repo}", newSession = TRUE)
+
+snippet bc
+	usethis::browse_cran(usethis::proj_get())
+
+snippet bg
+	usethis::browse_github("${1:package}")
+
+snippet pri
+	usethis::pr_init("${1:name}")
+
+snippet prf
+	usethis::pr_finish()
+
+snippet prp
+	usethis::pr_push()
+
+snippet prv
+	usethis::pr_view()
+
+snippet bp
+	browseURL(desc::desc_get_urls()[1])
+
+snippet si
+	sessionInfo()
+
+snippet td
+	usethis::use_tidy_description()
+
+snippet inst
+	pak::pkg_install("${1:package}")
