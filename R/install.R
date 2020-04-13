@@ -95,6 +95,7 @@ switch(Sys.info()[["sysname"]],
         {.file {win_dir}/rstudio-prefs.json.bak}.")
     }
     # snippets
+    fs::dir_create(glue::glue("{win_dir}/snippets"), recurse = TRUE)
     if (fs::file_exists(glue::glue("{win_dir}/snippets/r.snippets"))) {
       fs::file_copy(
         glue::glue("{win_dir}/snippets/r.snippets"),
@@ -138,6 +139,7 @@ switch(Sys.info()[["sysname"]],
         {.file {linux_dir}/rstudio-prefs.json.bak}.")
     }
     # snippets
+    fs::dir_create(glue::glue("{linux_dir}/snippets"), recurse = TRUE)
     if (fs::file_exists(glue::glue("{linux_dir}/snippets/r.snippets"))) {
       fs::file_copy(
         glue::glue("{linux_dir}/snippets/r.snippets"),
@@ -181,6 +183,7 @@ switch(Sys.info()[["sysname"]],
         {.file {mac_dir}/rstudio-prefs.json.bak}.")
     }
     # snippets
+    fs::dir_create(glue::glue("{mac_dir}/snippets"), recurse = TRUE)
     if (fs::file_exists(glue::glue("{mac_dir}/snippets/r.snippets"))) {
       fs::file_copy(
         glue::glue("{mac_dir}/snippets/r.snippets"),
