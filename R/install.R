@@ -50,7 +50,7 @@ if (!version_ok) {
   cli::cli_alert_danger("You need a newer version of RStudio.")
   cli::cli_text("Please go to {.url https://dailies.rstudio.com/} and download
                 version 1.4.162 or greater.")
-  cli::cli_alert_info("If you are using a Mac and {.code homebrew}, you can 
+  cli::cli_alert_info("If you are using a Mac and {.code homebrew}, you can
     call {.code brew cask install rstudio-daily}.", wrap = TRUE)
   stop("RStudio version too old.", call. = FALSE)
 }
@@ -71,7 +71,7 @@ switch(Sys.info()[["sysname"]],
         glue::glue("{win_dir}/keybindings/rstudio_bindings.json.bak"),
         overwrite = TRUE
       )
-      cli::cli_alert_success("Backed up old {.file rstudio_bindings.json} to 
+      cli::cli_alert_success("Backed up old {.file rstudio_bindings.json} to
         {.file {win_dir}/keybindings/rstudio_bindings.json.bak}.")
     }
     # addins
@@ -81,7 +81,7 @@ switch(Sys.info()[["sysname"]],
         glue::glue("{win_dir}/keybindings/addins.json.bak"),
         overwrite = TRUE
       )
-      cli::cli_alert_success("Backed up old {.file addins.json} to 
+      cli::cli_alert_success("Backed up old {.file addins.json} to
         {.file {win_dir}/keybindings/addins.json}.")
     }
     # rstudio-prefs
@@ -91,8 +91,18 @@ switch(Sys.info()[["sysname"]],
         glue::glue("{win_dir}/rstudio-prefs.json.bak"),
         overwrite = TRUE
       )
-      cli::cli_alert_success("Backed up old {.file rstudio-prefs.json} to 
+      cli::cli_alert_success("Backed up old {.file rstudio-prefs.json} to
         {.file {win_dir}/rstudio-prefs.json.bak}.")
+    }
+    # snippets
+    if (fs::file_exists(glue::glue("{win_dir}/snippets/r.snippets"))) {
+      fs::file_copy(
+        glue::glue("{win_dir}/snippets/r.snippets"),
+        glue::glue("{win_dir}/snippets/r.snippets.bak"),
+        overwrite = TRUE
+      )
+      cli::cli_alert_success("Backed up old {.file r.snippets} to
+        {.file {win_dir}/r.snippets.bak}.")
     }
   },
   Linux = {
@@ -104,7 +114,7 @@ switch(Sys.info()[["sysname"]],
         glue::glue("{linux_dir}/keybindings/rstudio_bindings.json.bak"),
         overwrite = TRUE
       )
-      cli::cli_alert_success("Backed up old {.file rstudio_bindings.json} to 
+      cli::cli_alert_success("Backed up old {.file rstudio_bindings.json} to
         {.file {linux_dir}/keybindings/rstudio_bindings.json.bak}.")
     }
     # addins
@@ -114,7 +124,7 @@ switch(Sys.info()[["sysname"]],
         glue::glue("{linux_dir}/keybindings/addins.json.bak"),
         overwrite = TRUE
       )
-      cli::cli_alert_success("Backed up old {.file addins.json} to 
+      cli::cli_alert_success("Backed up old {.file addins.json} to
         {.file {linux_dir}/keybindings/addins.json}.")
     }
     # rstudio-prefs
@@ -124,8 +134,18 @@ switch(Sys.info()[["sysname"]],
         glue::glue("{linux_dir}/rstudio-prefs.json.bak"),
         overwrite = TRUE
       )
-      cli::cli_alert_success("Backed up old {.file rstudio-prefs.json} to 
+      cli::cli_alert_success("Backed up old {.file rstudio-prefs.json} to
         {.file {linux_dir}/rstudio-prefs.json.bak}.")
+    }
+    # snippets
+    if (fs::file_exists(glue::glue("{linux_dir}/snippets/r.snippets"))) {
+      fs::file_copy(
+        glue::glue("{linux_dir}/snippets/r.snippets"),
+        glue::glue("{linux_dir}/snippets/r.snippets.bak"),
+        overwrite = TRUE
+      )
+      cli::cli_alert_success("Backed up old {.file r.snippets} to
+        {.file {linux_dir}/r.snippets.bak}.")
     }
   },
   Darwin = {
@@ -137,7 +157,7 @@ switch(Sys.info()[["sysname"]],
         glue::glue("{mac_dir}/keybindings/rstudio_bindings.json.bak"),
         overwrite = TRUE
       )
-      cli::cli_alert_success("Backed up old {.file rstudio_bindings.json} to 
+      cli::cli_alert_success("Backed up old {.file rstudio_bindings.json} to
         {.file {mac_dir}/keybindings/rstudio_bindings.json.bak}.")
     }
     # addins
@@ -147,7 +167,7 @@ switch(Sys.info()[["sysname"]],
         glue::glue("{mac_dir}/keybindings/addins.json.bak"),
         overwrite = TRUE
       )
-      cli::cli_alert_success("Backed up old {.file addins.json} to 
+      cli::cli_alert_success("Backed up old {.file addins.json} to
         {.file {mac_dir}/keybindings/addins.json}.")
     }
     # rstudio-prefs
@@ -157,8 +177,18 @@ switch(Sys.info()[["sysname"]],
         glue::glue("{mac_dir}/rstudio-prefs.json.bak"),
         overwrite = TRUE
       )
-      cli::cli_alert_success("Backed up old {.file rstudio-prefs.json} to 
+      cli::cli_alert_success("Backed up old {.file rstudio-prefs.json} to
         {.file {mac_dir}/rstudio-prefs.json.bak}.")
+    }
+    # snippets
+    if (fs::file_exists(glue::glue("{mac_dir}/snippets/r.snippets"))) {
+      fs::file_copy(
+        glue::glue("{mac_dir}/snippets/r.snippets"),
+        glue::glue("{mac_dir}/snippets/r.snippets.bak"),
+        overwrite = TRUE
+      )
+      cli::cli_alert_success("Backed up old {.file r.snippets} to
+        {.file {mac_dir}/r.snippets.bak}.")
     }
   }
 )
@@ -170,7 +200,7 @@ if (Sys.info()[["sysname"]] == "Windows") {
   #  need pkgbuild to check for RTools installation
   if (!requireNamespace("pkgbuild", quietly = TRUE)) install.packages("pkgbuild", type = "binary")
   if (pkgbuild::rtools_path() == "") {
-    cli::cli_alert_info("Installing `RTools`. This is required to install R 
+    cli::cli_alert_info("Installing `RTools`. This is required to install R
       packages from source.")
     if (!requireNamespace("installr", quietly = TRUE)) install.packages("installr")
     installr::install.Rtools(choose_version = FALSE, check = FALSE)
@@ -182,7 +212,7 @@ if (Sys.info()[["sysname"]] == "Windows") {
 if (!requireNamespace("jsonlite", quietly = TRUE)) install.packages("jsonlite")
 
 if (minimal != 1) {
-  cli::cli_alert_info("Starting to install dependencies for RStudio Addins. 
+  cli::cli_alert_info("Starting to install dependencies for RStudio Addins.
     Please be patient.")
 }
 cli::cat_rule()
@@ -207,6 +237,7 @@ fun_with_spinner <- function() {
     keybindings <- jsonlite::read_json("https://raw.githubusercontent.com/pat-s/rstudioSettings/master/inst/rstudio-bindings-patrick.json")
     general <- jsonlite::read_json("https://raw.githubusercontent.com/pat-s/rstudioSettings/master/inst/rstudio-prefs-patrick.json")
     addins <- jsonlite::read_json("https://raw.githubusercontent.com/pat-s/rstudioSettings/master/inst/addins.json")
+    snippets <- readLines("https://raw.githubusercontent.com/pat-s/rstudioSettings/master/inst/r.snippets")
   } else {
     keybindings <- jsonlite::read_json("https://raw.githubusercontent.com/pat-s/rstudioSettings/master/inst/rstudio-bindings-minimal.json")
     general <- jsonlite::read_json("https://raw.githubusercontent.com/pat-s/rstudioSettings/master/inst/rstudio-prefs-minimal.json")
@@ -280,6 +311,28 @@ fun_with_spinner <- function() {
         )
       }
     )
+
+    # snippets
+    switch(Sys.info()[["sysname"]],
+      Windows = {
+        writeLines(
+          snippets,
+          fs::path_expand(glue::glue("{win_dir}/snippets/r.snippets"))
+        )
+      },
+      Linux = {
+        writeLines(
+          snippets,
+          fs::path_expand(glue::glue("{linux_dir}/snippets/r.snippets"))
+        )
+      },
+      Darwin = {
+        writeLines(
+          snippets,
+          fs::path_expand(glue::glue("{mac_dir}/snippets/r.snippets"))
+        )
+      }
+    )
   }
   sp1$finish()
 }
@@ -292,12 +345,11 @@ if (minimal != 1) {
 } else {
   cli::cli_alert_success("Successfully supercharged your RStudio settings.")
 }
-cli::cli_text("You can view your new keyboard shortcuts via {.file Tools -> 
+cli::cli_text("You can view your new keyboard shortcuts via {.file Tools ->
   Modify Keyboard Shortcuts -> Customized} or alternatively by executing {.code jsonlite::fromJSON('~/.config/rstudio/keybindings/rstudio_bindings.json')} (Linux, Mac) or {.code jsonlite::fromJSON(fs::path_expand('~/AppData/Roaming/RStudio/keybindings/rstudio_bindings.json'))} (Windows, yes its more complicated...).")
-cli::cli_text("In addition, your console pane is now on the right instead of 
+cli::cli_text("In addition, your console pane is now on the right instead of
   splitting your editor pane in half. You are now using a 3-pane layout instead
    of the default 4-pane layout. If you don`t like it, you can restore the old
    style via {.file View -> Panes -> Pane Layout}.")
 
 cli::cli_alert("Please restart RStudio now.")
-
