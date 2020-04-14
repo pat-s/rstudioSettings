@@ -113,14 +113,17 @@ snippet shinymod
 snippet gc
 	gert::git_commit("${1:message}")
 
-snippet gca
+snippet gac
 	gert::git_commit_all("${1:message}")
 
+snippet gmm
+	git2r::merge("${1:`r rstudioapi::getActiveProject()`}", "master")
+
 snippet ph
-	gert::git_push()
+	git2r::push()
 
 snippet pu
-	gert::git_pull()
+	git2r::pull()
 
 snippet grh
 	gert::git_reset(type = "hard")
@@ -147,10 +150,13 @@ snippet nor
 	teamtools::open_repo("${1:repo}", newSession = TRUE)
 
 snippet bc
-	usethis::browse_cran(usethis::proj_get())
+	usethis::browse_cran("${1:`r basename(rstudioapi::getActiveProject())`}")
 
 snippet bg
-	usethis::browse_github("${1:package}")
+	usethis::browse_github("${1:`r basename(rstudioapi::getActiveProject())`}")
+
+snippet bga
+	usethis::browse_github_actions("${1:`r basename(rstudioapi::getActiveProject())`}")
 
 snippet pri
 	usethis::pr_init("${1:name}")
@@ -175,3 +181,6 @@ snippet td
 
 snippet inst
 	pak::pkg_install("${1:package}")
+
+snippet br
+	browser()
