@@ -7,5 +7,6 @@
     "drake::rs_addin_r_make": "Ctrl+Alt+W",
     "browse::browse": "Ctrl+B",
     "raddins::reload_project": "Cmd+R",
-    "raddins::open_github": "Shift+Cmd+G"
+    "raddins::open_github": "Shift+Cmd+G",
+    "raddins::view_object": "Ctrl+Shift+V"
 }
