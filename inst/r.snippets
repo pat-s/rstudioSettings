@@ -155,8 +155,14 @@ snippet bc
 snippet bg
 	usethis::browse_github("${1:`r basename(rstudioapi::getActiveProject())`}")
 
-snippet bga
+snippet ba
 	usethis::browse_github_actions("${1:`r basename(rstudioapi::getActiveProject())`}")
+
+snippet bi
+	usethis::browse_github_issues("${1:`r basename(rstudioapi::getActiveProject())`}")
+
+snippet bn
+	usethis::browse_news("${1:`r basename(rstudioapi::getActiveProject())`}")
 
 snippet pri
 	usethis::pr_init("${1:name}")
@@ -184,3 +190,6 @@ snippet inst
 
 snippet br
 	browser()
+
+snippet gsm
+	gert::git_branch_checkout(default_branch)
