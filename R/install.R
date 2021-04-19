@@ -27,12 +27,10 @@ if (minimal != 1) {
   remotes::install_github("gadenbuie/rsthemes")
   rsthemes::install_rsthemes(include_base16 = TRUE)
 
-  remotes::install_github("krlmlr/fledge")
-  remotes::install_github("pat-s/usethis@my-prs")
+  remotes::install_github("cynkra/fledge")
   remotes::install_github("r-lib/prettycode")
   remotes::install_github("tmastny/browse")
   remotes::install_github("lorenzwalthert/teamtools")
-  remotes::install_github("pat-s/styler@mlr-style")
   if (!requireNamespace("reprex", quietly = TRUE)) install.packages("reprex")
 }
 
