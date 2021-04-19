@@ -1,5 +1,5 @@
 yesno <- menu(c("Yes!", "Ehm, wait..."),
-  title = "This will overwrite all of your RStudio settings and keybindings. Do you want to continue?"
+  title = "This will overwrite all of your RStudio settings and keybindings (backups (*.bak) will be made before). Do you want to continue?"
 )
 
 minimal <- menu(c(
