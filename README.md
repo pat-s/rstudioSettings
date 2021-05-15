@@ -30,6 +30,6 @@ source("https://bit.ly/rstudio-config-pat")
 
 # How can I use my own settings?
 
-1.  Fork the repo
+1.  Click "Use this template" at the top right
 2.  Edit the settings in `inst/` to your liking
 3.  Adjust the `source()` call from above
